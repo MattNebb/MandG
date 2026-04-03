@@ -6,7 +6,7 @@ window.ADVENT_CONFIG = {
   title: "M&G Advent Calendar",
   subtitle: "hola mundo",
   /** Day 1 = first window unlocks on this date at local midnight */
-  adventStart: "2026-03-30",
+  adventStart: "2026-04-03",
   totalWindows: 15,
   /** Folder (relative to this site) containing prize images */
   prizesFolder: "prizes",
