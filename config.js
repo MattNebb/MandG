@@ -1,12 +1,13 @@
-/**
+ text
+ /**
  * Edit these values before sharing the link.
  * ADVENT_START: first calendar day for window 1 (YYYY-MM-DD in your local timezone).
  */
 window.ADVENT_CONFIG = {
-  title: "Our Advent Calendar",
+  title: "M&G Advent Calendar",
   subtitle: "Open one surprise each day",
   /** Day 1 = first window unlocks on this date at local midnight */
-  adventStart: "2026-12-01",
+  adventStart: "2026-03-30",
   totalWindows: 15,
   /** Folder (relative to this site) containing prize images */
   prizesFolder: "prizes",
