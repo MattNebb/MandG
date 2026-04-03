@@ -1,5 +1,4 @@
- text
- /**
+/**
  * Edit these values before sharing the link.
  * ADVENT_START: first calendar day for window 1 (YYYY-MM-DD in your local timezone).
  */

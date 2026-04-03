@@ -1,0 +1,6 @@
+# So config/app changes show up without long CDN cache (Cloudflare Pages)
+/config.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/app.js
+  Cache-Control: public, max-age=0, must-revalidate
