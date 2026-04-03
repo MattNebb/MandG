@@ -4,24 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Advent Calendar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Rubik+Glitch&family=VT323&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="weird-bg" aria-hidden="true">
-      <span class="weird-bg__scan"></span>
+      <div class="weird-bg__sky"></div>
+      <div class="weird-bg__grass"></div>
+      <div class="weird-bg__rainbow" aria-hidden="true"></div>
+      <div class="weird-bg__jpeg"></div>
       <span class="weird-bg__grain"></span>
     </div>
 
+    <div class="collage" aria-hidden="true">
+      <span class="collage__whisper collage__whisper--1">are you real?</span>
+      <span class="collage__whisper collage__whisper--2">are you real?</span>
+      <span class="collage__whisper collage__whisper--3">are you real?</span>
+      <span class="collage__whisper collage__whisper--4">are you real?</span>
+      <span class="collage__tiny collage__tiny--1">Goodbye :-)</span>
+      <span class="collage__tiny collage__tiny--2">???</span>
+      <span class="collage__warn">DO NOT LOOK</span>
+    </div>
+
     <header class="header">
-      <p class="header__eyebrow">liminal_season.exe</p>
-      <h1 class="header__title" id="pageTitle">Our Advent Calendar</h1>
-      <p class="header__subtitle" id="pageSubtitle">Open one surprise each day</p>
+      <p class="header__eyebrow">
+        <span class="header__warn">WARNING</span>
+        <span class="header__warn">WARNING</span>
+        <span class="header__warn">WARNING</span>
+      </p>
+      <h1 class="header__title wordart wordart--sunset" id="pageTitle">Our Advent Calendar</h1>
+      <p class="header__subtitle wordart wordart--sky" id="pageSubtitle">Open one surprise each day</p>
     </header>
 
     <main class="board" id="board" aria-label="Advent calendar windows"></main>
