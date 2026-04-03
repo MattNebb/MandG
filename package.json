@@ -1,0 +1,11 @@
+{
+  "name": "mg-advent-calendar",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler pages deploy . --project-name=mg-advent-calendar",
+    "cf:login": "wrangler login"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

@@ -1,0 +1,2 @@
+Add 15 image files here. Default names: 01.jpg through 15.jpg
+You can use .png instead — edit prizeFiles in config.js in the project root.

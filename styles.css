@@ -1,0 +1,298 @@
+:root {
+  --bg: #1a1512;
+  --bg-card: #f4ebe3;
+  --accent: #8b2332;
+  --accent-deep: #5c1520;
+  --gold: #c9a24d;
+  --gold-dim: rgba(201, 162, 77, 0.35);
+  --text: #2c2420;
+  --muted: #6b5e56;
+  --locked: #9a8f88;
+  --shadow: rgba(0, 0, 0, 0.25);
+  --radius: 14px;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 50% -10%, #2d2420 0%, var(--bg) 55%);
+  overflow-x: hidden;
+}
+
+.snow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.35) 50%, transparent 50%),
+    radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.25) 50%, transparent 50%),
+    radial-gradient(1px 1px at 80% 20%, rgba(255, 255, 255, 0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.3) 50%, transparent 50%);
+  background-size: 200px 200px, 260px 260px, 180px 180px, 220px 220px;
+  opacity: 0.6;
+  animation: drift 80s linear infinite;
+}
+
+@keyframes drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 400px 600px, -200px 400px, 300px -300px, -400px 200px;
+  }
+}
+
+.header {
+  text-align: center;
+  padding: 2.5rem 1.25rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.header__title {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: #f5ebe3;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+.header__subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 1.05rem;
+  color: rgba(245, 235, 227, 0.75);
+  font-weight: 400;
+}
+
+.board {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .board {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.15rem;
+  }
+}
+
+.door {
+  aspect-ratio: 1;
+  border: none;
+  padding: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: inherit;
+  position: relative;
+  background: linear-gradient(145deg, #fff9f3 0%, var(--bg-card) 45%, #e8ddd4 100%);
+  box-shadow: 0 8px 24px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.door:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.door:focus-visible {
+  box-shadow: 0 0 0 3px var(--gold), 0 8px 24px var(--shadow);
+}
+
+.door--locked {
+  cursor: not-allowed;
+  background: linear-gradient(145deg, #d4ccc4 0%, #b8aea6 100%);
+  opacity: 0.92;
+}
+
+.door--locked:hover {
+  transform: none;
+}
+
+.door__ribbon {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.door__ribbon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  max-width: 44px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.door__ribbon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 22%;
+  max-height: 44px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, var(--accent-deep) 0%, var(--accent) 50%, var(--accent-deep) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.door__bow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 30% 30%, #e8d89a, var(--gold) 55%, #8a6b2a);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.door__num {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.door--locked .door__num {
+  color: var(--locked);
+}
+
+.door--open .door__num {
+  opacity: 0.35;
+}
+
+.door--open {
+  background: linear-gradient(145deg, #fffdf8 0%, #efe6dc 100%);
+}
+
+.door--open .door__ribbon::before,
+.door--open .door__ribbon::after {
+  opacity: 0.35;
+}
+
+.door--open .door__bow {
+  opacity: 0.5;
+}
+
+.door__badge {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  z-index: 2;
+}
+
+.hint {
+  text-align: center;
+  color: rgba(245, 235, 227, 0.55);
+  font-size: 0.9rem;
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(15, 12, 10, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__inner {
+  margin: 0;
+  max-width: min(92vw, 720px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: min(72vh, 640px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox__caption {
+  margin: 0;
+  color: rgba(245, 235, 227, 0.9);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
